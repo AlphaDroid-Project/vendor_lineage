@@ -179,7 +179,7 @@
     <string name="config_rawContactsLocalAccountType" translatable="false">com.android.contacts</string>
 
     <!-- Default component for QR code scanner -->
-    <string name="config_defaultQrCodeComponent">org.lineageos.aperture/.QrScannerActivity</string>
+    <string name="config_defaultQrCodeComponent" translatable="false">org.lineageos.aperture/.QrScannerActivity</string>
 
     <!-- Default list of files pinned by the Pinner Service -->
     <string-array translatable="false" name="config_defaultPinnerServiceFiles">
