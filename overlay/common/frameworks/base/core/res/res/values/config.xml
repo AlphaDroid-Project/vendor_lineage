@@ -180,7 +180,7 @@
 
     <!-- Default component for QR code scanner -->
     <string name="config_defaultQrCodeComponent">org.lineageos.aperture/.QrScannerActivity</string>
-    
+
     <!-- Default list of files pinned by the Pinner Service -->
     <string-array translatable="false" name="config_defaultPinnerServiceFiles">
         <item>"/system/bin/surfaceflinger"</item>
@@ -216,4 +216,6 @@
 
     <string translatable="false" name="config_appsNotReportingCrashes">com.android.systemui,com.google.android.tts</string>
 
+    <!-- Name of the font family to use in the default lockscreen clock -->
+    <string name="config_clockFontFamily" translatable="false" />
 </resources>
