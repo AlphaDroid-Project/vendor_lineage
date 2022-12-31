@@ -19,3 +19,10 @@ ADDITIONAL_SYSTEM_PROPERTIES += \
 # LineageOS Platform Internal Version
 ADDITIONAL_SYSTEM_PROPERTIES += \
     ro.lineage.build.version.plat.rev=$(LINEAGE_PLATFORM_REV)
+
+# Alpha properties
+ADDITIONAL_SYSTEM_PROPERTIES += \
+    ro.alpha.build.version=$(LINEAGE_VERSION) \
+    ro.alpha.display.version=$(LINEAGE_DISPLAY_VERSION) \
+    ro.alpha.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR) \
+    ro.alpha.modversion=$(ALPHA_VERSION)
