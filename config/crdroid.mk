@@ -35,9 +35,6 @@ ifeq ($(TARGET_ENABLE_BLUR), true)
 PRODUCT_SYSTEM_EXT_PROPERTIES += \
     ro.sf.blurs_are_expensive=1 \
     ro.surface_flinger.supports_background_blur=1
-else
-PRODUCT_PRODUCT_PROPERTIES += \
-    ro.launcher.blur.appLaunch=0
 endif
 
 # Disable async MTE on system_server
@@ -56,5 +53,4 @@ PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION := frameworks/base/config/boot-im
 # Extra packages
 PRODUCT_PACKAGES += \
     GameSpace \
-    MatLog \
     ParallelSpace
