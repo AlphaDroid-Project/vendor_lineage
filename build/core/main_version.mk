@@ -25,4 +25,5 @@ ADDITIONAL_SYSTEM_PROPERTIES += \
     ro.alpha.build.version=$(LINEAGE_VERSION) \
     ro.alpha.display.version=$(LINEAGE_DISPLAY_VERSION) \
     ro.alpha.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR) \
-    ro.alpha.modversion=$(ALPHA_VERSION)
+    ro.alpha.modversion=$(ALPHA_VERSION) \
+    ro.alpha.build.package=$(ALPHA_BUILD_PACKAGE) \
