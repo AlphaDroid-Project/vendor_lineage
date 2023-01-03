@@ -6,9 +6,16 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.config.notification_sound=Argon.ogg \
     ro.config.alarm_alert=Hassium.ogg
 
+ifeq ($(TARGET_USE_GRAPHENE_CAMERA),true)
+PRODUCT_PACKAGES += \
+    GrapheneCamera
+else
+PRODUCT_PACKAGES += \
+    Aperture
+endif
+
 # Apps
 PRODUCT_PACKAGES += \
-    Aperture \
     Backgrounds \
     Eleven \
     Etar \
