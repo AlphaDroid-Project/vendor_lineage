@@ -129,7 +129,7 @@
        <item>app_cloning/delete_all_app_clones_enabled=true</item>
        <item>app_cloning/enable_app_cloning_building_blocks=true</item>
     </string-array>
-    
+
     <!-- Flag indicating which package name can access DeviceConfig table -->
     <string name="config_deviceConfiguratorPackageName" translatable="false">org.protonaosp.deviceconfig</string>
 
@@ -188,6 +188,8 @@
 
     <!-- Name of the font family to use in the default lockscreen clock -->
     <string name="config_clockFontFamily" translatable="false">google-sans-clock</string>
+
+    <string translatable="false" name="config_appsNotReportingCrashes">com.android.systemui,com.google.android.tts</string>
 
     <!-- Flag indicating which package name can access the persistent data partition -->
     <string name="config_persistentDataPackageName" translatable="false">com.google.android.gms</string>
@@ -534,7 +536,7 @@
          -->
     <string name="config_systemNotificationIntelligence" translatable="false">com.google.android.as</string>
 
-    <!-- The package name of the default supervision package. --> 
+    <!-- The package name of the default supervision package. -->
     <string name="config_systemSupervision" translatable="false">com.google.android.gms.supervision</string>
 
     <!-- Package name of the on-device intelligent processor for text. Examples
