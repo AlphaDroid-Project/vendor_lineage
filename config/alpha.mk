@@ -24,3 +24,6 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 # Disable blur on app launch
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.launcher.blur.appLaunch=0
+
+# GAPPS
+include vendor/gms/setup.mk
