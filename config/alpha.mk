@@ -25,5 +25,11 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.launcher.blur.appLaunch=0
 
+# HWUI
+PRODUCT_PRODUCT_PROPERTIES += \
+    debug.renderengine.backend?=skiaglthreaded \
+    debug.hwui.renderer?=skiagl \
+    debug.renderthread.skia.reduceopstasksplitting?=true
+
 # GAPPS
 include vendor/gms/setup.mk
