@@ -2,7 +2,7 @@ PRODUCT_VERSION_MAJOR = 13
 PRODUCT_VERSION_MINOR = 0
 
 # Increase CR Version with each major release.
-CR_VERSION := 9.0
+CR_VERSION := 9.1
 
 ALPHA_VERSION := 1.0
 ALPHA_VARIANT := Droid
