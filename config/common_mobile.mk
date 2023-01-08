@@ -8,7 +8,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 ifeq ($(TARGET_USE_GRAPHENE_CAMERA),true)
 PRODUCT_PACKAGES += \
-    GrapheneCamera
+    Camera
 else
 PRODUCT_PACKAGES += \
     Aperture
