@@ -180,4 +180,40 @@
 
     <!-- Default component for QR code scanner -->
     <string name="config_defaultQrCodeComponent">org.lineageos.aperture/.QrScannerActivity</string>
+    
+    <!-- Default list of files pinned by the Pinner Service -->
+    <string-array translatable="false" name="config_defaultPinnerServiceFiles">
+        <item>"/system/bin/surfaceflinger"</item>
+        <item>"/system/framework/framework.jar"</item>
+        <item>"/system/framework/services.jar"</item>
+        <item>"/system/lib/libEGL.so"</item>
+        <item>"/system/lib/libGLESv1_CM.so"</item>
+        <item>"/system/lib/libGLESv2.so"</item>
+        <item>"/system/lib/libGLESv3.so"</item>
+        <item>"/system/lib/libgui.so"</item>
+        <item>"/system/lib/libhwui.so"</item>
+        <item>"/system/lib/libui.so"</item>
+        <item>"/system/lib/libvulkan.so"</item>
+        <item>"/system/lib64/libEGL.so"</item>
+        <item>"/system/lib64/libGLESv1_CM.so"</item>
+        <item>"/system/lib64/libGLESv2.so"</item>
+        <item>"/system/lib64/libGLESv3.so"</item>
+        <item>"/system/lib64/libgui.so"</item>
+        <item>"/system/lib64/libhwui.so"</item>
+        <item>"/system/lib64/libui.so"</item>
+        <item>"/system/lib64/libvulkan.so"</item>
+        <item>"/system/system_ext/priv-app/SystemUI/SystemUI.apk"</item>
+        <item>"/system/system_ext/priv-app/SystemUI/oat/arm64/SystemUI.odex"</item>
+        <item>"/apex/com.android.art/javalib/core-oj.jar"</item>
+        <item>"/apex/com.android.art/javalib/core-libart.jar"</item>
+    </string-array>
+
+    <!-- True if home app should be pinned via Pinner Service -->
+    <bool name="config_pinnerHomeApp">true</bool>
+
+    <!-- Should the pinner service pin the Camera application? -->
+    <bool name="config_pinnerCameraApp">true</bool>
+
+    <string translatable="false" name="config_appsNotReportingCrashes">com.android.systemui,com.google.android.tts</string>
+
 </resources>
