@@ -33,3 +33,6 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 # GAPPS
 include vendor/gms/setup.mk
+
+PRODUCT_COPY_FILES += \
+    vendor/lineage/prebuilt/common/etc/init/init.alpha.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.alpha.rc
