@@ -16,7 +16,7 @@
 #
 
 #$1=TARGET_DEVICE, $2=PRODUCT_OUT, $3=FILE_NAME
-existingOTAjson=./vendor/crDroidOTA/$1.json
+existingOTAjson=./vendor/ota/$1.json
 output=$2/$1.json
 
 #cleanup old file
@@ -96,7 +96,7 @@ if [ -f $existingOTAjson ]; then
 			"oem": "'$oem'",
 			"device": "'$device'",
 			"filename": "'$filename'",
-			"download": "https://sourceforge.net/projects/crdroid/files/'$1'/'$v_max'.x/'$3'/download",
+			"download": "https://sourceforge.net/projects/alphadroid-project/files/'$1'/'$v_max'.x/'$3'/download",
 			"timestamp": '$timestamp',
 			"md5": "'$md5'",
 			"sha256": "'$sha256'",
@@ -137,7 +137,7 @@ else
 			"oem": "''",
 			"device": "''",
 			"filename": "'$filename'",
-			"download": "https://sourceforge.net/projects/crdroid/files/'$1'/'$v_max'.x/'$3'/download",
+			"download": "https://sourceforge.net/projects/alphadroid-project/files/'$1'/'$v_max'.x/'$3'/download",
 			"timestamp": '$timestamp',
 			"md5": "'$md5'",
 			"sha256": "'$sha256'",
@@ -160,7 +160,7 @@ else
 }' >> $output
 
 	echo 'There is no official support for this device yet'
-	echo 'Consider adding official support by reading the documentation at https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/13.0/README.md'
+	echo 'Consider adding official support by reading the documentation at https://github.com/AlphaDroid-devices/vendor_ota'
 fi
 
 echo ""
