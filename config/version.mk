@@ -6,6 +6,15 @@ ALPHA_VARIANT := Droid
 
 ALPHA_BUILD_TYPE ?= UNOFFICIAL
 
+# Only include Updater for official builds
+ifeq ($(filter-out OFFICIAL Official official,$(ALPHA_BUILD_TYPE)),)
+PRODUCT_PACKAGES += \
+    AlphaUpdater
+
+PRODUCT_COPY_FILES += \
+    vendor/lineage/prebuilt/common/etc/init/init.lineage-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.lineage-updater.rc
+endif
+
 ALPHA_BUILD_PACKAGE := vanilla
 
 # Internal version
