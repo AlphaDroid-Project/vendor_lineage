@@ -112,10 +112,6 @@ PRODUCT_PACKAGES += \
     LineageParts \
     LineageSettingsProvider \
     LineageSetupWizard
-#   Updater
-
-#PRODUCT_COPY_FILES += \
-#    vendor/lineage/prebuilt/common/etc/init/init.lineage-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.lineage-updater.rc
 
 # Themes
 PRODUCT_PACKAGES += \
