@@ -4,12 +4,8 @@ ADDITIONAL_SYSTEM_PROPERTIES += \
     ro.build.fingerprint=$(BUILD_FINGERPRINT)
 endif
 
-# crDroid System Version
+# crDroid legal
 ADDITIONAL_SYSTEM_PROPERTIES += \
-    ro.crdroid.build.version=$(LINEAGE_VERSION) \
-    ro.crdroid.display.version=$(LINEAGE_DISPLAY_VERSION) \
-    ro.crdroid.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR) \
-    ro.modversion=$(CR_VERSION) \
     ro.crdroidlegal.url=https://crdroid.net/legal.php
 
 # LineageOS Platform SDK Version
