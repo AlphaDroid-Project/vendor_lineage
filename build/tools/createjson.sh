@@ -29,62 +29,62 @@ echo "Generating JSON file data for OTA support..."
 if [ -f $existingOTAjson ]; then
 	#get data from already existing device json
 	#there might be a better way to parse json yet here we try without adding more dependencies like jq
-	maintainer=`grep -n "\"maintainer\"" $existingOTAjson | cut -d ":" -f 3 | sed 's/"//g' | sed 's/,//g' | xargs`
-	oem=`grep -n "\"oem\"" $existingOTAjson | cut -d ":" -f 3 | sed 's/"//g' | sed 's/,//g' | xargs`
-	device=`grep -n "\"device\"" $existingOTAjson | cut -d ":" -f 3 | sed 's/"//g' | sed 's/,//g' | xargs`
+	maintainer=`grep -m 1 -n "\"maintainer\"" $existingOTAjson | cut -d ":" -f 3 | sed 's/"//g' | sed 's/,//g' | xargs`
+	oem=`grep -m 1 -n "\"oem\"" $existingOTAjson | cut -d ":" -f 3 | sed 's/"//g' | sed 's/,//g' | xargs`
+	device=`grep -m 1 -n "\"device\"" $existingOTAjson | cut -d ":" -f 3 | sed 's/"//g' | sed 's/,//g' | xargs`
 	filename=$3
 	version=`echo "$3" | cut -d'-' -f5`
 	v_max=`echo "$version" | cut -d'.' -f1 | cut -d'v' -f2`
 	v_min=`echo "$version" | cut -d'.' -f2`
 	version=`echo $v_max.$v_min`
 	buildprop=$2/system/build.prop
-	linenr=`grep -n "ro.system.build.date.utc" $buildprop | cut -d':' -f1`
+	linenr=`grep -m 1 -n "ro.system.build.date.utc" $buildprop | cut -d':' -f1`
 	timestamp=`sed -n $linenr'p' < $buildprop | cut -d'=' -f2`
 	md5=`md5sum "$2/$3" | cut -d' ' -f1`
 	sha256=`sha256sum "$2/$3" | cut -d' ' -f1`
 	size=`stat -c "%s" "$2/$3"`
-	buildtype=`grep -n "\"buildtype\"" $existingOTAjson | cut -d ":" -f 3 | sed 's/"//g' | sed 's/,//g' | xargs`
-	forum=`grep -n "\"forum\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
+	buildtype=`grep -m 1 -n "ro.alpha.build.package" $buildprop | cut -d':' -f1`
+	forum=`grep -m 1 -n "\"forum\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
 	if [ ! -z "$forum" ]; then
 		forum="https:"$forum
 	fi
-	gapps=`grep -n "\"gapps\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
+	gapps=`grep -m 1 -n "\"gapps\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
 	if [ ! -z "$gapps" ]; then
 		gapps="https:"$gapps
 	fi
-	firmware=`grep -n "\"firmware\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
+	firmware=`grep -m 1 -n "\"firmware\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
 	if [ ! -z "$firmware" ]; then
 		firmware="https:"$firmware
 	fi
-	modem=`grep -n "\"modem\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
+	modem=`grep -m 1 -n "\"modem\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
 	if [ ! -z "$modem" ]; then
 		modem="https:"$modem
 	fi
-	bootloader=`grep -n "\"bootloader\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
+	bootloader=`grep -m 1 -n "\"bootloader\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
 	if [ ! -z "$bootloader" ]; then
 		bootloader="https:"$bootloader
 	fi
-	recovery=`grep -n "\"recovery\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
+	recovery=`grep -m 1 -n "\"recovery\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
 	if [ ! -z "$recovery" ]; then
 		recovery="https:"$recovery
 	fi
-	paypal=`grep -n "\"paypal\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
+	paypal=`grep -m 1 -n "\"paypal\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
 	if [ ! -z "$paypal" ]; then
 		paypal="https:"$paypal
 	fi
-	telegram=`grep -n "\"telegram\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
+	telegram=`grep -m 1 -n "\"telegram\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
 	if [ ! -z "$telegram" ]; then
 		telegram="https:"$telegram
 	fi
-	dt=`grep -n "\"dt\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
+	dt=`grep -m 1 -n "\"dt\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
 	if [ ! -z "$dt" ]; then
 		dt="https:"$dt
 	fi
-	common=`grep -n "\"common-dt\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
+	common=`grep -m 1 -n "\"common-dt\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
 	if [ ! -z "$common" ]; then
 		common="https:"$common
 	fi
-	kernel=`grep -n "\"kernel\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
+	kernel=`grep -m 1 -n "\"kernel\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
 	if [ ! -z "$kernel" ]; then
 		kernel="https:"$kernel
 	fi
@@ -124,7 +124,7 @@ else
 	v_min=`echo "$version" | cut -d'.' -f2`
 	version=`echo $v_max.$v_min`
 	buildprop=$2/system/build.prop
-	linenr=`grep -n "ro.system.build.date.utc" $buildprop | cut -d':' -f1`
+	linenr=`grep -m 1 -n "ro.system.build.date.utc" $buildprop | cut -d':' -f1`
 	timestamp=`sed -n $linenr'p' < $buildprop | cut -d'=' -f2`
 	md5=`md5sum "$2/$3" | cut -d' ' -f1`
 	sha256=`sha256sum "$2/$3" | cut -d' ' -f1`
