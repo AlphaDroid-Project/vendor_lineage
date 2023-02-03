@@ -43,7 +43,8 @@ if [ -f $existingOTAjson ]; then
 	md5=`md5sum "$2/$3" | cut -d' ' -f1`
 	sha256=`sha256sum "$2/$3" | cut -d' ' -f1`
 	size=`stat -c "%s" "$2/$3"`
-	buildtype=`grep -m 1 -n "ro.alpha.build.package" $buildprop | cut -d':' -f1`
+	linenr=`grep -m 1 -n "ro.alpha.build.package" $buildprop | cut -d':' -f1`
+	buildtype=`sed -n $linenr'p' < $buildprop | cut -d'=' -f2`
 	forum=`grep -m 1 -n "\"forum\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
 	if [ ! -z "$forum" ]; then
 		forum="https:"$forum
