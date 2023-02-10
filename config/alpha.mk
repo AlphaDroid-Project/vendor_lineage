@@ -5,13 +5,6 @@ PRODUCT_PACKAGES += \
     Launcher3QuickStep \
     RepainterServicePriv
 
-# Updater
-PRODUCT_PACKAGES += \
-    AlphaUpdater
-
-PRODUCT_COPY_FILES += \
-    vendor/lineage/prebuilt/common/etc/init/init.lineage-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.lineage-updater.rc
-
 ifeq ($(TARGET_INCLUDE_MATLOG),true)
 PRODUCT_PACKAGES += \
     MatLog
