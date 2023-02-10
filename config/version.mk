@@ -4,6 +4,18 @@ PRODUCT_VERSION_MINOR = 0
 ALPHA_VERSION := 1.2
 ALPHA_VARIANT := Droid
 
+
+ALPHA_BUILD_TYPE ?= UNOFFICIAL
+
+# Only include Updater for official builds
+ifeq ($(filter-out OFFICIAL Official official,$(ALPHA_BUILD_TYPE)),)
+PRODUCT_PACKAGES += \
+    AlphaUpdater
+
+PRODUCT_COPY_FILES += \
+    vendor/lineage/prebuilt/common/etc/init/init.lineage-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.lineage-updater.rc
+endif
+
 ifeq ($(WITH_GAPPS), true)
 ifeq ($(TARGET_CORE_GAPPS), true)
 ALPHA_BUILD_PACKAGE := core_gapps

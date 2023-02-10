@@ -23,4 +23,6 @@ ADDITIONAL_SYSTEM_PROPERTIES += \
     ro.alpha.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR) \
     ro.alpha.modversion=$(ALPHA_VERSION) \
     ro.alpha.build.package=$(ALPHA_BUILD_PACKAGE) \
-    ro.alpha.maintainer=$(ALPHA_MAINTAINER)
+    ro.alpha.maintainer=$(ALPHA_MAINTAINER) \
+    ro.alpha.release.type=$(ALPHA_BUILD_TYPE) \
+    ro.modversion=$(ALPHA_VERSION)
