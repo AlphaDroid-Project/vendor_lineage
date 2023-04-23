@@ -3,7 +3,8 @@ PRODUCT_BRAND ?= Alpha
 # Packages
 PRODUCT_PACKAGES += \
     Launcher3QuickStep \
-    RepainterServicePriv
+    RepainterServicePriv \
+    AlphaWallpapersStub
 
 ifeq ($(TARGET_INCLUDE_MATLOG),true)
 PRODUCT_PACKAGES += \
