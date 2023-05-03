@@ -109,8 +109,8 @@ endif
 # Bootanimation
 TARGET_SCREEN_WIDTH ?= 1080
 TARGET_SCREEN_HEIGHT ?= 1920
-PRODUCT_PACKAGES += \
-    bootanimation.zip
+#PRODUCT_PACKAGES += \
+#    bootanimation.zip
 
 # Lineage packages
 PRODUCT_PACKAGES += \
