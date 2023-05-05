@@ -16,14 +16,19 @@ PRODUCT_COPY_FILES += \
     vendor/lineage/prebuilt/common/etc/init/init.lineage-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.lineage-updater.rc
 endif
 
-ifeq ($(WITH_GAPPS), true)
-ifeq ($(TARGET_CORE_GAPPS), true)
+# WITH_GAPPS
+# 0 - NO GAPPS (DEFAULT)
+# 1 - CORE GAPPS
+# 2 - FULL GAPPS
+
+ifeq ($(strip $(WITH_GAPPS)),1)
 ALPHA_BUILD_PACKAGE := core_gapps
 else
+ifeq ($(strip $(WITH_GAPPS)),2)
 ALPHA_BUILD_PACKAGE:= full_gapps
-endif
 else
 ALPHA_BUILD_PACKAGE := vanilla
+endif
 endif
 
 # Internal version
