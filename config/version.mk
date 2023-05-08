@@ -16,15 +16,22 @@ PRODUCT_COPY_FILES += \
     vendor/lineage/prebuilt/common/etc/init/init.lineage-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.lineage-updater.rc
 endif
 
-# WITH_GAPPS
+
+# GAPPS_BUILD_TYPE
 # 0 - NO GAPPS (DEFAULT)
 # 1 - CORE GAPPS
 # 2 - FULL GAPPS
 
-ifeq ($(strip $(WITH_GAPPS)),1)
+WITH_GAPPS ?= 0
+ifeq ($(filter $(strip $(GAPPS_BUILD_TYPE)),0 1 2),)
+GAPPS_BUILD_TYPE := $(strip $(WITH_GAPPS))
+endif
+include vendor/gms/setup.mk
+
+ifeq ($(strip $(GAPPS_BUILD_TYPE)),1)
 ALPHA_BUILD_PACKAGE := core_gapps
 else
-ifeq ($(strip $(WITH_GAPPS)),2)
+ifeq ($(strip $(GAPPS_BUILD_TYPE)),2)
 ALPHA_BUILD_PACKAGE:= full_gapps
 else
 ALPHA_BUILD_PACKAGE := vanilla

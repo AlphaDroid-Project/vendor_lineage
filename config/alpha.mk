@@ -32,8 +32,5 @@ PRODUCT_PRODUCT_PROPERTIES += \
     debug.hwui.renderer?=skiagl \
     debug.renderthread.skia.reduceopstasksplitting?=true
 
-# GAPPS
-include vendor/gms/setup.mk
-
 PRODUCT_COPY_FILES += \
     vendor/lineage/prebuilt/common/etc/init/init.alpha.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.alpha.rc
