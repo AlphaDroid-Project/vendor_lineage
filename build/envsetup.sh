@@ -971,11 +971,11 @@ function setbuildtype() {
         0) echo "Build type = vanilla. Saved." ;;
         1) echo "Build type = core GAPPS. Saved." ;;
         2) echo "Build type = full GAPPS. Saved." ;;
-        *) echo "Invalid build type. Ignored."
-           return
+        *) echo "Invalid/skipped. Using device tree config."
+           buildtype=""
            ;;
     esac
-    export WITH_GAPPS=$buildtype
+    export GAPPS_BUILD_TYPE=$buildtype
 }
 
 export SKIP_ABI_CHECKS=true
