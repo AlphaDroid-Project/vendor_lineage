@@ -33,7 +33,7 @@ if [ -f $existingOTAjson ]; then
 	oem=`grep -m 1 -n "\"oem\"" $existingOTAjson | cut -d ":" -f 3 | sed 's/"//g' | sed 's/,//g' | xargs`
 	device=`grep -m 1 -n "\"device\"" $existingOTAjson | cut -d ":" -f 3 | sed 's/"//g' | sed 's/,//g' | xargs`
 	filename=$3
-	version=`echo "$3" | cut -d'-' -f5`
+	version=`echo "$3" | cut -d'-' -f6`
 	v_max=`echo "$version" | cut -d'.' -f1 | cut -d'v' -f2`
 	v_min=`echo "$version" | cut -d'.' -f2`
 	version=`echo $v_max.$v_min`
@@ -120,7 +120,7 @@ if [ -f $existingOTAjson ]; then
 }' >> $output
 else
 	filename=$3
-	version=`echo "$3" | cut -d'-' -f5`
+	version=`echo "$3" | cut -d'-' -f6`
 	v_max=`echo "$version" | cut -d'.' -f1 | cut -d'v' -f2`
 	v_min=`echo "$version" | cut -d'.' -f2`
 	version=`echo $v_max.$v_min`
