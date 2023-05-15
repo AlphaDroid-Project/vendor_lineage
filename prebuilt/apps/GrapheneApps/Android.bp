@@ -1,0 +1,10 @@
+android_app_import {
+	name: "GrapheneApps",
+	owner: "GrapheneOS",
+	apk: "GrapheneApps.apk",
+	certificate: "platform",
+	dex_preopt: {
+		enabled: false,
+	},
+	product_specific: true,
+}
