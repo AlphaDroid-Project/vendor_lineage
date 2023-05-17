@@ -229,7 +229,7 @@
         <item>org.lineageos.recorder</item>
     </string-array>
 
-    <string translatable="false" name="config_appsNotReportingCrashes">com.android.systemui,com.google.android.tts</string>
+    <string translatable="false" name="config_appsNotReportingCrashes">com.android.statementservice,com.android.systemui,com.google.android.tts</string>
 
     <!-- Flag indicating which package name can access the persistent data partition -->
     <string name="config_persistentDataPackageName" translatable="false">com.google.android.gms</string>
