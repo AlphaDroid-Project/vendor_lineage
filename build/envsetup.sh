@@ -963,7 +963,7 @@ function fixup_common_out_dir() {
 
 function setbuildtype() {
     echo "Choose build type"
-    echo "0 - Vanilla"
+    echo "0 - Vanilla (default)"
     echo "1 - Core GAPPS"
     echo "2 - Full GAPPS"
     read buildtype;
