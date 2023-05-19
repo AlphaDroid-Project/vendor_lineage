@@ -1,3 +1,0 @@
-on early-init
-rm /data/resource-cache
-rm /data/system/package_cache
