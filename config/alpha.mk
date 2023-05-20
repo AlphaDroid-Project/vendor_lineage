@@ -6,14 +6,6 @@ PRODUCT_PACKAGES += \
     RepainterServicePriv \
     AlphaWallpapersStub
 
-# Build GmsCompat and GrapheneApps on vanilla builds
-ifeq ($(strip $(GAPPS_BUILD_TYPE)), 0)
-PRODUCT_PACKAGES += \
-    GmsCompat \
-    GmsCompatConfig \
-    GrapheneApps
-endif
-
 ifeq ($(TARGET_INCLUDE_MATLOG),true)
 PRODUCT_PACKAGES += \
     MatLog
