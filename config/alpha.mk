@@ -11,6 +11,21 @@ PRODUCT_PACKAGES += \
     MatLog
 endif
 
+# ADB
+ifeq ($(strip $(TARGET_DEFAULT_ADB_ENABLED)), true)
+  PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.adb.secure=0
+else
+#  ifeq ($(strip $(TARGET_DEFAULT_ADB_ENABLED)), false)
+#    PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.adb.secure=1
+#  else
+    ifeq ($(TARGET_BUILD_VARIANT),eng)
+      PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.adb.secure=0
+    else
+      PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.adb.secure=1
+    endif
+#  endif
+endif
+
 # Dalvik
 PRODUCT_PROPERTY_OVERRIDES += \
     pm.dexopt.boot=verify \
