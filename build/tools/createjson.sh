@@ -92,7 +92,7 @@ if [ -f $existingOTAjson ]; then
 			"maintainer": "'$maintainer'",
 			"oem": "'$oem'",
 			"device": "'$device'",
-			"filename": "'$filename'",
+			"filename": "'$3'",
 			"download": "https://sourceforge.net/projects/alphadroid-project/files/'$1'/'$3'/download",
 			"timestamp": '$timestamp',
 			"md5": "'$md5'",
@@ -114,6 +114,10 @@ if [ -f $existingOTAjson ]; then
 		}
 	]
 }' >> $output
+
+echo ""
+cat $output
+
 else
 	version=$(awk '{ sub(/v/, ""); sub(/\.zip/, ""); print }' <<< `echo "$3" | cut -d'-' -f6`)
 	buildprop=$2/system/build.prop
@@ -129,7 +133,7 @@ else
 			"maintainer": "''",
 			"oem": "''",
 			"device": "''",
-			"filename": "'$filename'",
+			"filename": "'$3'",
 			"download": "https://sourceforge.net/projects/alphadroid-project/files/'$1'/'$3'/download",
 			"timestamp": '$timestamp',
 			"md5": "'$md5'",
@@ -153,7 +157,7 @@ else
 }' >> $output
 
 	echo 'There is no official support for this device yet'
-	echo 'Consider adding official support by reading the documentation at https://github.com/alphadroid-devices/OTA/blob/13.0/README.md'
+	echo 'Consider adding official support by reading the documentation at https://github.com/alphadroid-devices/OTA/blob/alpha-13/README.md'
 fi
 
 echo ""
