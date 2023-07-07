@@ -21,39 +21,22 @@ endif
 # 1 - CORE GAPPS
 # 2 - FULL GAPPS
 
-# validate input from envsetup stored on GAPPS_BUILD_TYPE
+# validate GAPPS_BUILD_TYPE used on envsetup
 ifeq ($(filter $(strip $(GAPPS_BUILD_TYPE)),0 1 2),)
-# if GAPPS_BUILD_TYPE is empty or invalide, pick WITH_GAPPS value (if valid) from dt
-ifneq ($(filter $(strip $(WITH_GAPPS)),0 1 2),)
-GAPPS_BUILD_TYPE := $(WITH_GAPPS)
+# if value is not valid, pick WITH_GAPPS from dt
+GAPPS_BUILD_TYPE := $(strip $(WITH_GAPPS))
+endif
+
+ifeq ($(GAPPS_BUILD_TYPE),1)
+ALPHA_BUILD_PACKAGE := core_gapps
 else
-# default to vanilla if both WITH_GAPPS and GAPPS_BUILD_TYPE are invalid or undefined
-GAPPS_BUILD_TYPE := 0
+ifeq ($(GAPPS_BUILD_TYPE),2)
+ALPHA_BUILD_PACKAGE := full_gapps
+else # default
+ALPHA_BUILD_PACKAGE := vanilla
 endif
 endif
 
-ifeq ($(strip $(GAPPS_BUILD_TYPE)),0)
-ALPHA_BUILD_PACKAGE := vanilla
-ifeq ($(strip $(TARGET_INCLUDE_GMS_COMPAT)),true)
-# Optionally build GmsCompat and GrapheneApps on vanilla builds
-PRODUCT_PACKAGES += \
-    GmsCompat \
-    GmsCompatConfig \
-    GrapheneApps
-endif
-else
-ifeq ($(strip $(GAPPS_BUILD_TYPE)),1)
-ALPHA_BUILD_PACKAGE := core_gapps
-else
-ifeq ($(strip $(GAPPS_BUILD_TYPE)),2)
-ALPHA_BUILD_PACKAGE := full_gapps
-# conditionally include pixel-framework
-#ifneq ($(strip $(TARGET_INCLUDE_PIXEL_FRAMEWORK)),false)
-#$(call inherit-product-if-exists, vendor/pixel-framework/config.mk)
-#endif
-endif
-endif
-endif
 # include GMS setup
 $(call inherit-product, vendor/gms/setup.mk)
 
