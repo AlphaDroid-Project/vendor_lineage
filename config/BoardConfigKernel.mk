@@ -18,6 +18,7 @@
 #
 # These config vars are usually set in BoardConfig.mk:
 #
+#   TARGET_KERNEL_ADDITIONAL_FLAGS     = Additional make flags, optional
 #   TARGET_KERNEL_SOURCE               = Kernel source dir, optional, defaults
 #                                          to kernel/$(TARGET_DEVICE_DIR)
 #   TARGET_KERNEL_ARCH                 = Kernel Arch
@@ -74,9 +75,11 @@ KERNEL_PATCHLEVEL := $(shell grep -s "^PATCHLEVEL = " $(TARGET_KERNEL_SOURCE)/Ma
 TARGET_KERNEL_VERSION ?= $(shell echo $(KERNEL_VERSION)"."$(KERNEL_PATCHLEVEL))
 
 # 5.10+ can fully compile without GCC by default
-ifeq ($(shell expr $(KERNEL_VERSION) \>= 5), 1)
-    ifeq ($(shell expr $(KERNEL_PATCHLEVEL) \>= 10), 1)
-        TARGET_KERNEL_NO_GCC ?= true
+ifneq ($(KERNEL_VERSION),)
+    ifeq ($(shell expr $(KERNEL_VERSION) \>= 5), 1)
+        ifeq ($(shell expr $(KERNEL_PATCHLEVEL) \>= 10), 1)
+            TARGET_KERNEL_NO_GCC ?= true
+        endif
     endif
 endif
 
@@ -192,6 +195,10 @@ ifeq (true,$(filter true, $(TARGET_NEEDS_DTBOIMAGE) $(BOARD_KERNEL_SEPARATED_DTB
     TARGET_KERNEL_DTBO_PREFIX ?=
     TARGET_KERNEL_DTBO ?= dtbo.img
     BOARD_PREBUILT_DTBOIMAGE ?= $(TARGET_OUT_INTERMEDIATES)/DTBO_OBJ/arch/$(KERNEL_ARCH)/boot/$(TARGET_KERNEL_DTBO_PREFIX)$(TARGET_KERNEL_DTBO)
+endif
+
+ifneq ($(TARGET_KERNEL_ADDITIONAL_FLAGS),)
+    KERNEL_MAKE_FLAGS += $(TARGET_KERNEL_ADDITIONAL_FLAGS)
 endif
 
 # Set the default dtb target
