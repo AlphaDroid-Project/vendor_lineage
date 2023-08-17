@@ -21,7 +21,6 @@ Additional LineageOS functions:
 - sort-blobs-list: Sort proprietary-files.txt sections with LC_ALL=C.
 - installboot:     Installs a boot.img to the connected device.
 - installrecovery: Installs a recovery.img to the connected device.
-- setbuildtype:    Sets the build type. Options are: 0-vanilla, 1-core gapps, 2-full gapps.
 EOF
 }
 
@@ -959,23 +958,6 @@ function fixup_common_out_dir() {
         [ -L ${common_out_dir} ] && rm ${common_out_dir}
         mkdir -p ${common_out_dir}
     fi
-}
-
-function setbuildtype() {
-    echo "Choose build type"
-    echo "0 - Vanilla"
-    echo "1 - Core GAPPS"
-    echo "2 - Full GAPPS"
-    read buildtype;
-    case $buildtype in
-        0) echo "Build type = vanilla. Saved." ;;
-        1) echo "Build type = core GAPPS. Saved." ;;
-        2) echo "Build type = full GAPPS. Saved." ;;
-        *) echo "Invalid/skipped. Using device tree config."
-           buildtype=""
-           ;;
-    esac
-    export GAPPS_BUILD_TYPE=$buildtype
 }
 
 export SKIP_ABI_CHECKS=true
