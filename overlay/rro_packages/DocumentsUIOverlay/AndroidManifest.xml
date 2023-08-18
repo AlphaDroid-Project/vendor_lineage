@@ -11,4 +11,6 @@
         android:priority="100"
         android:targetPackage="com.android.documentsui"
         android:targetName="DocumentsUICustomization" />
+
+    <application android:hasCode="false" android:allowBackup="false" />
 </manifest>
