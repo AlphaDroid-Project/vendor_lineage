@@ -10,6 +10,12 @@ PRODUCT_PACKAGES += \
     MatLog
 endif
 
+# From common_mobile.mk
+PRODUCT_PACKAGES += \
+    NavigationBarMode2ButtonOverlay \
+    ThemePicker \
+    ThemesStub
+
 # ADB
 ifeq ($(strip $(TARGET_DEFAULT_ADB_ENABLED)), true)
   PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.adb.secure=0
