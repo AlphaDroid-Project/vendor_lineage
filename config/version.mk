@@ -16,7 +16,8 @@ PRODUCT_COPY_FILES += \
     vendor/lineage/prebuilt/common/etc/init/init.lineage-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.lineage-updater.rc
 endif
 
-ifeq ($(WITH_GAPPS), true)
+WITH_GMS ?= $(WITH_GAPPS)
+ifeq ($(WITH_GMS), true)
   ALPHA_BUILD_PACKAGE := gapps
   $(call inherit-product, vendor/gms/setup.mk)
   ifeq ($(TARGET_INCLUDE_PIXEL_FRAMEWORK), true)
