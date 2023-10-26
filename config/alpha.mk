@@ -5,6 +5,12 @@ PRODUCT_PACKAGES += \
     Launcher3QuickStep \
     AlphaWallpapersStub
 
+# Dektop mode
+$(call inherit-product, packages/services/VncFlinger/product.mk)
+
+PRODUCT_PACKAGES += \
+    DesktopMode
+
 ifeq ($(TARGET_INCLUDE_MATLOG),true)
 PRODUCT_PACKAGES += \
     MatLog
