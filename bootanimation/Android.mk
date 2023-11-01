@@ -1,6 +1,7 @@
 #
 # Copyright (C) 2016 The CyanogenMod Project
 #               2017-2024 The LineageOS Project
+#               2023-2024 AlphaDroid
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,6 +16,8 @@
 # limitations under the License.
 #
 
+# We use 1x1 bootanimation, so no need to resize height
+
 TARGET_GENERATED_BOOTANIMATION := $(TARGET_OUT_INTERMEDIATES)/BOOTANIMATION/bootanimation.zip
 $(TARGET_GENERATED_BOOTANIMATION): INTERMEDIATES := $(call intermediates-dir-for,BOOTANIMATION,bootanimation)
 $(TARGET_GENERATED_BOOTANIMATION): $(SOONG_ZIP)
@@ -27,16 +30,13 @@ $(TARGET_GENERATED_BOOTANIMATION): $(SOONG_ZIP)
 	else \
 	    IMAGEWIDTH=$(TARGET_SCREEN_WIDTH); \
 	fi; \
-	IMAGESCALEWIDTH=$$IMAGEWIDTH; \
-	IMAGESCALEHEIGHT=$$(expr $$IMAGESCALEWIDTH / 3); \
-	if [ "$(TARGET_BOOTANIMATION_HALF_RES)" = "true" ]; then \
-	    IMAGEWIDTH="$$(expr "$$IMAGEWIDTH" / 2)"; \
-	fi; \
-	IMAGEHEIGHT=$$(expr $$IMAGEWIDTH / 3); \
-	RESOLUTION="$$IMAGEWIDTH"x"$$IMAGEHEIGHT"; \
+	RESOLUTION="$$IMAGEWIDTH"x"$$IMAGEWIDTH"; \
+	for part_cnt in 0 1 2; do \
+	    mkdir -p $(INTERMEDIATES)/part$$part_cnt; \
+	done; \
 	prebuilts/tools-lineage/${HOST_OS}-x86/bin/mogrify -resize $$RESOLUTION -colors 256 $(INTERMEDIATES)/*/*.png; \
-	echo "$$IMAGESCALEWIDTH $$IMAGESCALEHEIGHT 60" > $(INTERMEDIATES)/desc.txt; \
-	cat vendor/lineage/bootanimation/desc.txt >> $(INTERMEDIATES)/desc.txt
+	echo "$$IMAGEWIDTH $$IMAGEWIDTH 30" > $(INTERMEDIATES)/desc.txt; \
+	cat vendor/lineage/product/bootanimation/desc.txt >> $(INTERMEDIATES)/desc.txt
 	$(hide) $(SOONG_ZIP) -L 0 -o $@ -C $(INTERMEDIATES) -D $(INTERMEDIATES)
 
 ifeq ($(TARGET_BOOTANIMATION),)
