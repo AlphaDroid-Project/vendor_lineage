@@ -12,3 +12,9 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 # Disable blur on app launch
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.launcher.blur.appLaunch=0
+
+# GMS
+ifeq ($(WITH_GMS),true)
+BUILD_GMS_OVERLAYS_AND_PROPS := true
+$(call inherit-product, vendor/gms/products/gms.mk)
+endif
