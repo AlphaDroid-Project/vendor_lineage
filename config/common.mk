@@ -3,7 +3,6 @@ $(call inherit-product-if-exists, vendor/extra/product.mk)
 $(call inherit-product-if-exists, vendor/lineage/config/crdroid.mk)
 $(call inherit-product-if-exists, vendor/lineage/config/alpha.mk)
 $(call inherit-product-if-exists, vendor/addons/config.mk)
-$(call inherit-product-if-exists, vendor/pixel-framework/config.mk)
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
