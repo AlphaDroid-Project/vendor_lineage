@@ -383,7 +383,7 @@
         <item>settings_ui/bt_near_by_suggestion_enabled=true</item>
         <item>settings_ui/bt_le_audio_contact_sharing_enabled=true</item>
     </string-array>
-    
+
     <!-- Flag indicating which package name can access DeviceConfig table -->
     <string name="config_deviceConfiguratorPackageName" translatable="false">org.protonaosp.deviceconfig</string>
 
@@ -442,9 +442,6 @@
 
     <!-- Name of the font family to use in the default lockscreen clock -->
     <string name="config_clockFontFamily" translatable="false">google-sans-clock</string>
-
-    <!-- Whether or not to enable the lock screen entry point for the QR code scanner. -->
-    <bool name="config_enableQrCodeScannerOnLockScreen">true</bool>
 
     <!-- Package name of Health Connect data migrator application.  -->
     <string name="config_healthConnectMigratorPackageName" translatable="false">com.google.android.apps.healthdata</string>
@@ -873,7 +870,7 @@
          -->
     <string name="config_systemNotificationIntelligence" translatable="false">com.google.android.as</string>
 
-    <!-- The package name of the default supervision package. --> 
+    <!-- The package name of the default supervision package. -->
     <string name="config_systemSupervision" translatable="false">com.google.android.gms.supervision</string>
 
     <!-- Package name of the on-device intelligent processor for text. Examples
