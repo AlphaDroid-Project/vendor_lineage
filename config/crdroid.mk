@@ -7,7 +7,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     persist.sys.dun.override=0 \
     persist.sys.disable_rescue=true
 
-ifneq ($(WITH_GMS), true)
+ifneq ($(TARGET_BUILD_PACKAGE),3)
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.error.receiver.system.apps=com.google.android.gms \
     ro.setupwizard.enterprise_mode=1 \

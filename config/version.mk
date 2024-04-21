@@ -15,10 +15,18 @@ PRODUCT_COPY_FILES += \
     vendor/lineage/prebuilt/common/etc/init/init.lineage-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.lineage-updater.rc
 endif
 
-ifeq ($(WITH_GMS),true)
-ALPHA_BUILD_PACKAGE := gapps
+# TARGET_BUILD_PACKAGE options:
+# 1 - vanilla (default)
+# 2 - microg
+# 3 - gapps
+ifeq ($(TARGET_BUILD_PACKAGE),3)
+  ALPHA_BUILD_PACKAGE := gapps
 else
-ALPHA_BUILD_PACKAGE := vanilla
+  ifeq ($(TARGET_BUILD_PACKAGE),2)
+    ALPHA_BUILD_PACKAGE := microg
+  else
+    ALPHA_BUILD_PACKAGE := vanilla
+  endif
 endif
 
 # Internal version
