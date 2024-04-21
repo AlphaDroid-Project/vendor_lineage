@@ -443,7 +443,7 @@
     <!-- Name of the font family to use in the default lockscreen clock -->
     <string name="config_clockFontFamily" translatable="false">google-sans-clock</string>
 
-    <string translatable="false" name="config_appsNotReportingCrashes">com.android.systemui,com.google.android.tts</string>
+    <string translatable="false" name="config_appsNotReportingCrashes">com.android.systemui,com.google.android.tts,app.lawnchair</string>
 
     <!-- List of system components which are allowed to receive ServiceState entries in an
          un-sanitized form, even if the location toggle is off. This is intended ONLY for system

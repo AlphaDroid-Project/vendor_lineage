@@ -1,5 +1,5 @@
 # GMS
-ifeq ($(WITH_GMS),true)
+ifeq ($(TARGET_BUILD_PACKAGE),3)
 WITH_GMS_COMMS_SUITE := true
 endif
 
