@@ -3,6 +3,12 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     dalvik.vm.debug.alloc=0 \
     ro.url.legal=http://www.google.com/intl/%s/mobile/android/basic/phone-legal.html \
     ro.url.legal.android_privacy=http://www.google.com/intl/%s/mobile/android/basic/privacy.html \
+    drm.service.enabled=true \
+    persist.sys.dun.override=0 \
+    persist.sys.disable_rescue=true
+
+ifneq ($(WITH_GMS), true)
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.error.receiver.system.apps=com.google.android.gms \
     ro.setupwizard.enterprise_mode=1 \
     ro.atrace.core.services=com.google.android.gms,com.google.android.gms.ui,com.google.android.gms.persistent \
@@ -13,10 +19,8 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.setupwizard.network_required=false \
     ro.setupwizard.gservices_delay=-1 \
     ro.setupwizard.mode=OPTIONAL \
-    setupwizard.feature.predeferred_enabled=false \
-    drm.service.enabled=true \
-    persist.sys.dun.override=0 \
-    persist.sys.disable_rescue=true
+    setupwizard.feature.predeferred_enabled=false
+endif
 
 # Disable touch video heatmap to reduce latency, motion jitter, and CPU usage
 # on supported devices with Deep Press input classifier HALs and models
