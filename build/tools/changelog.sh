@@ -1,6 +1,7 @@
 #!/bin/bash
 #
 # Copyright (C) 2017-2024 crDroid Android Project
+# Copyright (C) 2023-2024 AlphaDroid
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -27,15 +28,15 @@ fi
 # define changelog_days using 'export changelog_days=10'
 # this can be done before intiate build environment (. build/envsetup.sh)
 if [ -z $changelog_days ];then
-	changelog_days=10
+	changelog_days=20
 else
 	if (($changelog_days > 30 )); then
         echo "Changelog can not generated for more than 30 days. For how many days do you want to generate changelog again? (🕑 timeout 15 seconds - default to 10 days)"
-        read -r -t 15 changelog_days || changelog_days=10
+        read -r -t 15 changelog_days || changelog_days=20
 	fi
 fi
 
-REPO_LIST="$(repo list --path | sed 's|^vendor/SOTA$||')"
+REPO_LIST="$(cat .repo/project.list | sed '\?^vendor/OTA?d')"
 for i in $(seq $changelog_days); do
     After_Date=`date --date="$i days ago" +%m-%d-%Y`
     k=$(expr $i - 1)
