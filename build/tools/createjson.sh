@@ -1,6 +1,7 @@
 #!/bin/bash
 #
-# Copyright (C) 2019-2022 crDroid Android Project
+# Copyright (C) 2019-2023 crDroid Android Project
+# Copyright (C) 2023-2024 AlphaDroid
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -157,7 +158,7 @@ else
 }' >> $output
 
 	echo 'There is no official support for this device yet'
-	echo 'Consider adding official support by reading the documentation at https://github.com/alphadroid-devices/OTA/blob/alpha-13/README.md'
+	echo 'Consider adding official support by reading the documentation at https://github.com/alphadroid-devices/OTA/blob/alpha-14/README.md'
 fi
 
 echo ""
