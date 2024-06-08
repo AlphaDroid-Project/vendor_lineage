@@ -8,11 +8,13 @@ ALPHA_BUILD_TYPE ?= UNOFFICIAL
 
 # Only include Updater for official builds
 ifeq ($(filter-out OFFICIAL Official official,$(ALPHA_BUILD_TYPE)),)
-PRODUCT_PACKAGES += \
+  PRODUCT_PACKAGES += \
     AlphaUpdater
 
-PRODUCT_COPY_FILES += \
+  PRODUCT_COPY_FILES += \
     vendor/lineage/prebuilt/common/etc/init/init.lineage-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.lineage-updater.rc
+
+  -include vendor/alpha/keys/keys.mk
 endif
 
 # TARGET_BUILD_PACKAGE options:
