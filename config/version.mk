@@ -15,6 +15,9 @@ ifeq ($(filter-out OFFICIAL Official official,$(ALPHA_BUILD_TYPE)),)
     vendor/lineage/prebuilt/common/etc/init/init.lineage-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.lineage-updater.rc
 
   -include vendor/alpha/keys/keys.mk
+else
+  # Include keys.mk from the LineageOS location for unofficial builds
+  -include vendor/lineage-priv/keys/keys.mk
 endif
 
 # TARGET_BUILD_PACKAGE options:
