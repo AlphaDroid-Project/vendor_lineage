@@ -1,8 +1,5 @@
 PRODUCT_BRAND ?= Alpha
 
-PRODUCT_PACKAGES += \
-    bootanimation.zip
-
 ifeq ($(TARGET_INCLUDE_MATLOG),true)
   PRODUCT_PACKAGES += \
     MatLog
