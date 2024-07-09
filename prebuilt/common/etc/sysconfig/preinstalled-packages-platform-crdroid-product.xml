@@ -129,7 +129,7 @@
         <do-not-install-in user-type="android.os.usertype.profile.CLONE" />
     </install-in-user-type>
     <!-- Updater -->
-    <install-in-user-type package="com.crdroid.updater">
+    <install-in-user-type package="com.alpha.updater">
         <install-in user-type="FULL" />
         <install-in user-type="PROFILE" />
         <do-not-install-in user-type="android.os.usertype.profile.CLONE" />
