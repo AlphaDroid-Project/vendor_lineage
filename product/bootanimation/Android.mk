@@ -18,11 +18,25 @@
 
 # We use 1x1 bootanimation, so no need to resize height
 
-SOURCE_PATH := vendor/lineage/product/bootanimation
+ifeq(TARGET_USES_CUSTOM_BOOTANIMATION,true)
+    ifeq ($(TARGET_CUSTOM_BOOTANIMATION_PATH),)
+        $(error "bootanimation: TARGET_CUSTOM_BOOTANIMATION_PATH is undefined while TARGET_USES_CUSTOM_BOOTANIMATION is true")
+    else
+        ifeq (,$(wildcard $(TARGET_CUSTOM_BOOTANIMATION_PATH)/desc.txt))
+            $(error "bootanimation: TARGET_CUSTOM_BOOTANIMATION_PATH is defined but $(TARGET_CUSTOM_BOOTANIMATION_PATH)/desc.txt does not exists")
+        endif
+        ifeq (,$(wildcard $(TARGET_CUSTOM_BOOTANIMATION_PATH)/bootanimation.tar))
+            $(error "bootanimation: TARGET_CUSTOM_BOOTANIMATION_PATH is defined but $(TARGET_CUSTOM_BOOTANIMATION_PATH)/bootanimation.tar does not exists")
+        endif
+        SOURCE_PATH := $(TARGET_CUSTOM_BOOTANIMATION_PATH)
+    endif
+else
+    SOURCE_PATH := vendor/lineage/product/bootanimation
+endif
 TARGET_GENERATED_BOOTANIMATION := $(TARGET_OUT_INTERMEDIATES)/BOOTANIMATION/bootanimation.zip
 $(TARGET_GENERATED_BOOTANIMATION): INTERMEDIATES := $(call intermediates-dir-for,BOOTANIMATION,bootanimation)
 $(TARGET_GENERATED_BOOTANIMATION): $(SOONG_ZIP)
-	@echo "Building bootanimation.zip"
+	@echo "Building bootanimation.zip from $(SOURCE_PATH)"
 	@rm -rf $(dir $@)
 	@mkdir -p $(INTERMEDIATES)
 	$(hide) tar xfp $(SOURCE_PATH)/bootanimation.tar -C $(INTERMEDIATES)
