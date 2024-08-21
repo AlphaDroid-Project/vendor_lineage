@@ -43,7 +43,7 @@ DEBUG = False
 custom_local_manifest = ".repo/local_manifests/roomservice.xml"
 custom_default_revision =  "alpha-14"
 custom_dependencies = "lineage.dependencies"
-org_manifest = "alphadroid"  # leave empty if org is provided in manifest
+org_manifest = "alphadroid-devices"  # leave empty if org is provided in manifest
 org_display = "AlphaDroid"  # needed for displaying
 
 github_auth = None
@@ -278,15 +278,15 @@ def main():
     for repository in repositories:
         repo_name = repository['name']
 
-        if not (repo_name.startswith("android_device_") and
+        if not ((repo_name.startswith("android_device_") or repo_name.startswith("device_")) and
                 repo_name.endswith("_" + device)):
             continue
         print("Found repository: %s" % repository['name'])
 
         fallback_branch = detect_revision(repository)
-        manufacturer = repo_name.replace("android_device_", "").replace("_" + device, "")
+        manufacturer = repo_name.replace("android_device_", "").replace("device_", "").replace("_" + device, "")
         repo_path = "device/%s/%s" % (manufacturer, device)
-        adding = [{'repository': "alphadroid-devices/" + repo_name, 'target_path': repo_path}]
+        adding = [{'repository': repository["full_name"], 'target_path': repo_path}]
 
         add_to_manifest(adding, fallback_branch)
 
