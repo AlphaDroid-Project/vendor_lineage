@@ -74,3 +74,12 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.biometrics.face.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.biometrics.face.xml
 endif
 endif
+
+# DeviceAsWebcam
+ifeq ($(TARGET_BUILD_DEVICE_AS_WEBCAM), true)
+    PRODUCT_PACKAGES += \
+        DeviceAsWebcam
+
+    PRODUCT_VENDOR_PROPERTIES += \
+        ro.usb.uvc.enabled=true
+endif
