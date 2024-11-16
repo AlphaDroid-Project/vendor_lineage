@@ -234,7 +234,8 @@ PRODUCT_PACKAGE_OVERLAYS += \
 
 PRODUCT_PACKAGES += \
     DocumentsUIOverlay \
-    NetworkStackOverlay
+    NetworkStackOverlay \
+    WallpaperPickerOverlay
 
 # Translations
 CUSTOM_LOCALES += \
